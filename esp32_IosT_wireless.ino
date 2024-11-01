@@ -1,3 +1,4 @@
+//code to glow light via wifi
 #include <WiFi.h>
 #include <Adafruit_NeoPixel.h>
 #include <WebServer.h>
