@@ -9,7 +9,8 @@ const char* password = "123456789";  //"granite-134-264";
 // NeoPixel setup
 #define DATA_PIN 18   // Pin connected to the NeoPixel data line
 #define NUMPIXELS 50  // Number of LEDs in the strip
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUMPIXELS, DATA_PIN, NEO_GRB + NEO_KHZ800); // neo_grb and neo_khz800 specify the color format (GRB)
+#define BRIGHTNESS 100 // Set brightness to 100%
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUMPIXELS, DATA_PIN, NEO_GRB + NEO_KHZ800); 
 
 // Web server on port 80
 WebServer server(80);
@@ -49,6 +50,7 @@ void switchLights(char letter) {
     case 'X': index = 6; color = strip.Color(255, 255, 0); break;     // Yellow
     case 'Y': index = 7; color = strip.Color(255, 0, 0); break;       // Red
     case 'Z': index = 8; color = strip.Color(255, 0, 255); break;     // Magenta
+    // Add all the other cases as needed...
     default: break;  // Non-alphabet characters won't light up any LEDs
   }
 
@@ -74,10 +76,10 @@ void lightUpWord(String word) {
 // Webpage HTML
 String webpage = "<html>\
   <body>\
-  <h1>ESP32 NeoPixel Controller</h1>\
+  <h1>McNeese ACM Internet of Stranger Things</h1>\
   <form action=\"/setword\" method=\"GET\">\
   Enter a word: <input type=\"text\" name=\"word\">\
-  <input type=\"submit\" value=\"Set\">\
+  <input type=\"submit\" value=\"Display\">\
   </form>\
   </body>\
   </html>";
@@ -90,14 +92,15 @@ void handleSetWord() {
   if (server.hasArg("word")) {
     String word = server.arg("word");
     word.trim(); // Remove any trailing newline or spaces
-    word.toUpperCase(); // Convert the entire word to uppercase to ensure case insensitivity
+    for (int i = 0; i < word.length(); i++) {
+        word[i] = toupper(word[i]);
+    }
     lightUpWord(word);
     server.send(200, "text/html", "Word set: " + word + "<br><a href=\"/\">Go back</a>");
   } else {
     server.send(200, "text/html", "No word provided.<br><a href=\"/\">Go back</a>");
   }
 }
-
 
 void setup() {
   Serial.begin(115200);
@@ -126,5 +129,4 @@ void setup() {
 
 void loop() {
   server.handleClient();
-  
 }
