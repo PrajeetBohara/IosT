@@ -3,8 +3,8 @@
 #include <WebServer.h>
 
 // Replace with your network credentials
-const char* ssid = "RPG";  //"Machi*ne";
-const char* password = "123456789";  //"granite-134-264";
+const char* ssid = "wifiname";
+const char* password = "wifipass"; 
 
 // NeoPixel setup
 #define DATA_PIN 18   // Pin connected to the NeoPixel data line
