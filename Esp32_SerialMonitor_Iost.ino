@@ -1,4 +1,4 @@
-#code to glow light via seria monitor
+//code to glow light via seria monitor
 
 #include <WiFi.h>
 #include <Adafruit_NeoPixel.h>
