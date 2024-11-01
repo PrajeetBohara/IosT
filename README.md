@@ -10,5 +10,6 @@ The second version takes a step further by connecting the ESP32 WROOM to the int
 Both versions of the project highlight the versatility of ESP32 WROOM in handling input/output operations, web hosting, and wireless communications. This remodified project not only showcases the technical capabilities of IoT devices but also creates a fun and interactive experience inspired by pop culture.
 
 For this project Adafruit Neopixel lights were used. So, please make sure to install the neopixel library first before using the code.
+Power Rating for Neopixel lights = 5v DC (Other details can be found in the Adrafruit official website documentation)
 
 Demo: https://www.youtube.com/watch?v=avIp73Ixm1g
