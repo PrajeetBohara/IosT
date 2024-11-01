@@ -1,3 +1,5 @@
+//code to glow light either from serial monitor or wirelessly along with a standby light mode when no any inputs are received
+
 #include <WiFi.h>
 #include <Adafruit_NeoPixel.h>
 #include <WebServer.h>
